@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
@@ -16,7 +16,7 @@ const FilterCard = ({ data, title, checked, setChecked }) => {
   };
 
   const router = useRouter();
-  const params = useSearchParams();
+
   const handleClick = (options) => {
     // let currentQuery = {};
     // if (params) {
