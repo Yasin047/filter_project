@@ -1,7 +1,6 @@
 export const sorts = [
-  { name: "Default", value: "20" },
-  { name: "Price (Low > High)", value: "Price (Low > High)" },
-  { name: "Price (High > Low)", value: "Price (High > Low)" },
+  { name: "Price (Low > High)", value: "asc" },
+  { name: "Price (High > Low)", value: "desc" },
 ];
 
 export const availabilityData = [

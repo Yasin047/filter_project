@@ -4,7 +4,7 @@ import {
   interfaceData,
   specialFeatureData,
   typeData,
-} from "../app/utils/db/index.js";
+} from "../app/utils/data/index.js";
 import FilterCard from "./FilterCard.jsx";
 import PriceRange from "./PriceRange.jsx";
 

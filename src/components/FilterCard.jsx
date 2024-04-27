@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
@@ -13,31 +12,6 @@ const FilterCard = ({ data, title, checked, setChecked }) => {
         ? currentItem.filter((item) => item !== key)
         : [...checked, key]
     );
-  };
-
-  const router = useRouter();
-
-  const handleClick = (options) => {
-    // let currentQuery = {};
-    // if (params) {
-    //   currentQuery = qs.parse(params.toString());
-    // }
-    // const updatedQuery = {
-    //   ...currentQuery,
-    //   availability: options,
-    // };
-    // console.log(updatedQuery);
-    // if (params?.get("availability") === options) {
-    //   updatedQuery, updatedQuery.availability;
-    // }
-    // const url = qs.stringifyUrl(
-    //   {
-    //     url: "/",
-    //     query: updatedQuery,
-    //   },
-    //   { skipNull: true }
-    // );
-    // router.push(url);
   };
 
   return (
@@ -61,7 +35,7 @@ const FilterCard = ({ data, title, checked, setChecked }) => {
         <div className="relative top-8">
           {open &&
             data?.map((item) => (
-              <div key={item.key} onClick={() => handleClick(item.options)}>
+              <div key={item.key}>
                 <label className="cursor-pointer flex justify-start items-center ">
                   <input
                     type="checkbox"

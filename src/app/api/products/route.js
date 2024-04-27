@@ -16,6 +16,7 @@ export const GET = async (req) => {
     const specialFeature = searchParams.get("specialFeature");
     const minPrice = searchParams.get("minPrice");
     const maxPrice = searchParams.get("maxPrice");
+    const sortBy = searchParams.get("sortBy");
 
     let products;
 
@@ -26,7 +27,8 @@ export const GET = async (req) => {
       color ||
       specialFeature ||
       minPrice ||
-      maxPrice
+      maxPrice ||
+      sortBy
     ) {
       products = await prisma.products.findMany({
         where: {
@@ -45,7 +47,10 @@ export const GET = async (req) => {
             },
             {
               AND: {
-                price: { gte: parseInt(minPrice), lte: parseInt(maxPrice) },
+                price: {
+                  gte: parseInt(minPrice) || 0,
+                  lte: parseInt(maxPrice) || 100000,
+                },
               },
             },
             {
@@ -55,6 +60,9 @@ export const GET = async (req) => {
             },
           ],
         },
+        orderBy: {
+          price: sortBy || "asc",
+        },
       });
     } else {
       products = await prisma.products.findMany();
@@ -62,12 +70,8 @@ export const GET = async (req) => {
     return NextResponse.json({
       success: true,
       products,
-      lenght: products.length,
     });
   } catch (error) {
     return NextResponse.json(error.message);
   }
 };
-
-// http://localhost:3000/api/products?type=with-microphone
-// http://localhost:3000/api/products?availability=upcoming&type=with-microphone

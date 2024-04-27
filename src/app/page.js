@@ -5,7 +5,7 @@ import SelectBox from "@/components/SelectBox";
 import SideBar from "@/components/SideBar";
 import { useState } from "react";
 import { IoFilter } from "react-icons/io5";
-import { sorts } from "./utils/db";
+import { sorts } from "./utils/data";
 import useFetchingData from "./utils/hooks/useFatchingData";
 
 export default function Home() {
@@ -17,6 +17,7 @@ export default function Home() {
   const [specialFeature, setSpecialFeature] = useState([]);
   const [minValue, set_minValue] = useState(0);
   const [maxValue, set_maxValue] = useState(100000);
+  const [sortBy, setSortBy] = useState("");
 
   const { products, loading } = useFetchingData(
     availability,
@@ -25,7 +26,8 @@ export default function Home() {
     color,
     specialFeature,
     minValue,
-    maxValue
+    maxValue,
+    sortBy
   );
 
   return (
@@ -55,7 +57,11 @@ export default function Home() {
             </div>
             <div className="flex gap-x-4 text-sm text-gray-500">
               <div>Sort By:</div>
-              <SelectBox options={sorts} />
+              <SelectBox
+                options={sorts}
+                selectedValue={sortBy}
+                setSelectedValue={setSortBy}
+              />
             </div>
           </div>
           <Products products={products} loading={loading} />

@@ -8,7 +8,8 @@ const useFetchingData = (
   color,
   specialFeature,
   minPrice,
-  maxPrice
+  maxPrice,
+  sortBy
 ) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,11 +42,15 @@ const useFetchingData = (
     if (maxPrice > 0) {
       params.maxPrice = maxPrice;
     }
+    if (sortBy.length > 0) {
+      params.sortBy = sortBy;
+    }
     const queryString = new URLSearchParams(params);
 
     if (queryString.toString()) {
       url += `?${queryString.toString()}`;
     }
+
     axios
       .get(url)
       .then((response) => {
@@ -55,7 +60,16 @@ const useFetchingData = (
       .catch((error) => {
         setError(error);
       });
-  }, [availability, type, color, inter, specialFeature, minPrice, maxPrice]);
+  }, [
+    availability,
+    type,
+    color,
+    inter,
+    specialFeature,
+    minPrice,
+    maxPrice,
+    sortBy,
+  ]);
 
   return {
     products,

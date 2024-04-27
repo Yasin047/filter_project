@@ -1,9 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
-const SelectBox = ({ options }) => {
-  const [selectedValue, setSelectedValue] = useState("");
+const SelectBox = ({ options, selectedValue, setSelectedValue }) => {
   return (
     <div>
       <select

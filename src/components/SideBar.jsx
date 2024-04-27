@@ -4,7 +4,7 @@ import {
   interfaceData,
   specialFeatureData,
   typeData,
-} from "@/app/utils/db";
+} from "@/app/utils/data";
 import { IoCloseOutline } from "react-icons/io5";
 import { Menu, Sidebar } from "react-pro-sidebar";
 import FilterCard from "./FilterCard";
