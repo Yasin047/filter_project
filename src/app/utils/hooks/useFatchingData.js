@@ -50,7 +50,7 @@ const useFetchingData = (
     if (queryString.toString()) {
       url += `?${queryString.toString()}`;
     }
-
+    console.log(url);
     axios
       .get(url)
       .then((response) => {
